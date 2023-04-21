@@ -18,20 +18,19 @@ public:
     V find(const K& key) const;
 
 private:
-
-    void rebalance(Node*& r);
-    int balance(Node* r);
-    int height(Node* r);
-
     struct Node{
         Node() = default;
-        Node(const K& k_, const V& d_) : key(k_), data(d_), left(nullptr), right(nullptr);
+        Node(const K& k_, const V& d_) : key(k_), data(d_), left(nullptr), right(nullptr) {}
         K key;
         V data;
         Node* left;
         Node* right;
     };
 
+    void rebalance(Node*& r);
+    int balance(Node* r);
+    int height(Node* r);
+    
     Node* root_;
 
 };
