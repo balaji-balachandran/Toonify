@@ -10,24 +10,25 @@
 using namespace std;
 using namespace cimg_library;
 
-class SuperPixel {
-public:
-    int h, w;
-    double l, a, b;
-    vector<pair<int, int>> pixels;
 
-    SuperPixel(int h, int w, double l = 0, double a = 0, double b = 0) {
-        update(h, w, l, a, b);
-    }
+// class SuperPixel {
+// public:
+//     int h, w;
+//     double l, a, b;
+//     vector<pair<int, int>> pixels;
 
-    void update(int h, int w, double l, double a, double b) {
-        this->h = h;
-        this->w = w;
-        this->l = l;
-        this->a = a;
-        this->b = b;
-    }
-};
+//     SuperPixel(int h, int w, double l = 0, double a = 0, double b = 0) {
+//         update(h, w, l, a, b);
+//     }
+
+//     void update(int h, int w, double l, double a, double b) {
+//         this->h = h;
+//         this->w = w;
+//         this->l = l;
+//         this->a = a;
+//         this->b = b;
+//     }
+// };
 
 SuperPixel make_superPixel(int h, int w, const CImg<double> &img) {
     return SuperPixel(h, w, img(w, h, 0), img(w, h, 1), img(w, h, 2));
@@ -171,5 +172,6 @@ int main() {
     string output_image_path = "output.jpg";
     avg_color_cluster(img, output_image_path, clusters);
 
-    return 0;
-}
+
+     return 0;
+// }
