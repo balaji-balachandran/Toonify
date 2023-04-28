@@ -5,7 +5,6 @@
 #include <tuple>
 #include <map>
 #include "CImg.h"
-#include "slic.h"
 
 using namespace std;
 using namespace cimg_library;
