@@ -23,9 +23,12 @@ int main () {
     s.insert(15, 9995);
 
     cout << s.get_root()->left->right->key << ' ' << s.get_root()->right->left->key << endl;
+    cout << s.get_root()->left->right->parent->key << ' ' << s.get_root()->right->left->parent->key << endl;
+    cout << s.get_root()->left->parent->key << endl;
 
 
-    Node<int, int>* n = s.find(10000);
+
+    Node<int, int>* n = s.find(10);
 
     if (n) cout << n->key << endl;
     else cout << "nullptr" << endl;
