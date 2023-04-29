@@ -31,14 +31,18 @@ public:
 
 
     Node<K,V>* insert(const K& key, const V& data);
-    void remove(const K& key);
     Node<K,V>* find(const K& key);
+
+    Node<K,V>* get_root();
 
 
 private:
     void rotateLeft(Node<K,V>* n);
     void rotateRight(Node<K,V>* n);
-    void splay(Node<K,V>* n);
+    void splay_nodes(Node<K,V>* n);
+
+    void remove(Node<K,V>* n);
+
     
     Node<K,V>* root;
 
