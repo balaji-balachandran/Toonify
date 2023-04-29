@@ -41,6 +41,9 @@ private:
     void rotateRight(Node<K,V>* n);
     void splay_nodes(Node<K,V>* n);
 
+    Node<K,V>* rotate_right(Node<K,V>* n);
+    Node<K,V>* rotate_left(Node<K,V>* n);
+
     void remove(Node<K,V>* n);
 
     
