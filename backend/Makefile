@@ -1,7 +1,7 @@
 CXX=clang++
 INCLUDES=-Iincludes/
 CXX_FLAGS=-std=c++20 -gdwarf-4 -fstandalone-debug
-EXTRA_CXX_FLAGS=-Wall -Wextra -Werror -pedantic -fsanitize=address,null -fno-omit-frame-pointer
+EXTRA_CXX_FLAGS=-Wall -Wextra -Werror -pedantic
 
 exec: bin/exec
 

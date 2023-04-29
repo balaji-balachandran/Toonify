@@ -59,7 +59,7 @@ Node<K,V>* Splay<K,V>::insert(const K& key, const V& data) {
     
     new_node->parent = curr;
     
-    splay_nodes(new_node);
+    // splay_nodes(new_node);
 
     return new_node;
 }
@@ -141,68 +141,68 @@ void Splay<K,V>::splay_nodes(Node<K,V>* n) {
 
 	if (n == root || n == nullptr) return;
 
-	// //zig case
-	// if (n->parent == root) {
-	// 	if (n->parent->left == n) root = rotate_right(root);
-    //     else root = rotate_left(root);
-	// 	return;
-	// }
+	//zig case
+	if (n->parent == root) {
+		if (n->parent->left == n) root = rotate_right(root);
+        else root = rotate_left(root);
+		return;
+	}
 
-	// //zig zig case
-	// else if (n->parent->left == n && n->parent->parent->left == n->parent) {
-	// 	if (n->parent->parent == root) {
-	// 		root = rotate_right(root);
-	// 		root = rotate_right(root);
-	// 		return;
-	// 	}
-	// 	else {
-	// 		n->parent = rotate_right(n->parent->parent);
-	// 		n = rotate_right(n->parent);
-	// 		splay_nodes(n);
-	// 		return;
-	// 	}
-	// } 
+	//zig zig case
+	else if (n->parent->left == n && n->parent->parent->left == n->parent) {
+		if (n->parent->parent == root) {
+			root = rotate_right(root);
+			root = rotate_right(root);
+			return;
+		}
+		else {
+			n->parent = rotate_right(n->parent->parent);
+			n = rotate_right(n->parent);
+			splay_nodes(n);
+			return;
+		}
+	} 
 
-	// //zag zag case
-	// else if (n->parent->right == n && n->parent->parent->right == n->parent) {
-	// 	if (n->parent->parent == root) {
-	// 		root = rotate_left(root);
-	// 		root = rotate_left(root);
-	// 		return;
-	// 	} else {
-	// 		n->parent = rotate_left(n->parent->parent);
-	// 		n = rotate_left(n->parent);
+	//zag zag case
+	else if (n->parent->right == n && n->parent->parent->right == n->parent) {
+		if (n->parent->parent == root) {
+			root = rotate_left(root);
+			root = rotate_left(root);
+			return;
+		} else {
+			n->parent = rotate_left(n->parent->parent);
+			n = rotate_left(n->parent);
 
-	// 		splay_nodes(n);
-	// 		return;
-	// 	}
-	// } 
+			splay_nodes(n);
+			return;
+		}
+	} 
 
-	// 	//zag-zig cases
-	// else if (n->parent->right == n && n->parent->parent->left == n->parent) {
-	// 	n = rotate_left(n->parent);
-	// 	if (n->parent == root) {
-	// 		root = rotate_right(root);
-	// 		return;
-	// 	} else {
-	// 		n = rotate_right(n->parent);
-	// 		splay_nodes(n);
-	// 		return;
-	// 	}
-	// } 
+		//zag-zig cases
+	else if (n->parent->right == n && n->parent->parent->left == n->parent) {
+		n = rotate_left(n->parent);
+		if (n->parent == root) {
+			root = rotate_right(root);
+			return;
+		} else {
+			n = rotate_right(n->parent);
+			splay_nodes(n);
+			return;
+		}
+	} 
 
-	// 	//zig zag case
-	// else if (n->parent->left == n && n->parent->parent->right == n->parent) {
-	// 	n = rotate_right(n->parent);
+		//zig zag case
+	else if (n->parent->left == n && n->parent->parent->right == n->parent) {
+		n = rotate_right(n->parent);
 
-	// 	if (n->parent == root) {
-	// 		root = rotate_left(root);
-	// 		return;
-	// 	} else {
-	// 		n = rotate_left(n->parent);
-	// 		splay_nodes(n);
-	// 		return;
-	// 	}
-	// }
+		if (n->parent == root) {
+			root = rotate_left(root);
+			return;
+		} else {
+			n = rotate_left(n->parent);
+			splay_nodes(n);
+			return;
+		}
+	}
 
 }
