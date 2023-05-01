@@ -11,6 +11,11 @@ make
 ./bin/exec
 
 
+
+Makefile flags
 LDFLAGS = -L/usr/local/lib
 LDLIBS = -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_highgui
  ${LDFLAGS} ${LDLIBS}
+
+
+ {EXTRA_CXX_FLAGS} -fsanitize=address,null -fno-omit-frame-pointer

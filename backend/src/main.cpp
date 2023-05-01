@@ -36,14 +36,19 @@ int main () {
     n = s.find(10);
     cout << "New root: " << s.get_root()->key << endl;
     n = s.find(0);
-    cout << "New root: " << s.get_root()->key << endl;
+    cout << "New root: " << s.get_root()->key << ' ' << s.get_root()->right->key << endl;
     n = s.find(20);
-    cout << "New root: " << s.get_root()->key << endl;
+    cout << "New root: " << s.get_root()->key << ' ' << s.get_root()->left->key << endl;
     n = s.find(5);
-    cout << "New root: " << s.get_root()->key << endl;
+    cout << "New root: " << s.get_root()->key << ' ' << s.get_root()->right->key << endl;
     n = s.find(15);
-    cout << "New root: " << s.get_root()->key << endl;
+    cout << "New root: " << s.get_root()->key << ' ' << s.get_root()->left->key << endl;
     
+
+    n = s.find(16);
+    
+    if (n) cout << n->key << endl;
+    else cout << "nullptr" << endl;
 
 
     return 0;
