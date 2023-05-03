@@ -7,8 +7,8 @@ LIBS=-framework CoreFoundation -framework CoreGraphics -framework CoreServices -
 
 exec: bin/exec
 
-bin/exec : src/main.cpp src/slic.cpp src/Huffman.cpp src/Splay.cpp src/Huffman.h src/Splay.h
-	${CXX} $(INCLUDES) ${CXX_FLAGS} ${EXTRA_CXX_FLAGS} src/main.cpp src/Huffman.cpp src/Splay.cpp src/slic.cpp -o bin/exec $(LIBS)
+bin/exec : src/slic.cpp src/Huffman.cpp src/Splay.cpp src/Huffman.h src/Splay.h
+	${CXX} $(INCLUDES) ${CXX_FLAGS} ${EXTRA_CXX_FLAGS} src/slic.cpp src/Huffman.cpp src/Splay.cpp -o bin/exec $(LIBS)
 
 .DEFAULT_GOAL := exec
 .PHONY: clean exec

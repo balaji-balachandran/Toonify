@@ -4,6 +4,7 @@
 #include <limits>
 #include <tuple>
 #include <map>
+/*#define cimg_use_jpeg*/
 #include "CImg.h"
 
 using namespace std;
@@ -144,7 +145,7 @@ vector<SuperPixel> slic(int S, CImg<double> &img, int img_h, int img_w, vector<S
 }
 
 int main() {
-    string input_image_path = "input.jpg";
+    string input_image_path = "input.png";
     CImg<double> img(input_image_path.c_str());
     img.RGBtoLab();
 
@@ -167,7 +168,7 @@ int main() {
     img.LabtoRGB();
 
     // Save pls work
-    string output_image_path = "output.jpg";
+    string output_image_path = "output.png";
     avg_color_cluster(img, output_image_path, clusters);
 
     return 0;
