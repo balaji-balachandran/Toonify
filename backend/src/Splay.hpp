@@ -66,7 +66,7 @@ template <class K, class V>
 Node<K,V>* Splay<K,V>::find(const K& key) {
     Node<K,V>* curr = root;
 
-    while (curr->key != key && (curr->left && curr->right)) {
+    while ((curr->left || curr->right) && curr->key != key) {
         if (key < curr->key) curr = curr->left;
         else if (key > curr->key) curr = curr->right;
     }
