@@ -28,17 +28,15 @@ if(isset($_POST['submit']) && isset($_FILES['image'])){
     $statement->bind_param('s', $imgData);
     $current_id = $statement->execute() or die("<b>Error:</b> Problem on Image Insert<br/>" . mysqli_connect_error());
 
-    echo "Success";
-
-    $filename = "myFile.sav"; 
+    $filename = $_FILES['image']['tmp_name'];
     $handle = fopen($filename, "rb"); 
     $fsize = filesize($filename); 
-    $contents = fread($handle, $fsize); 
-    $byteArray = unpack("N*",$contents); 
-    print_r($byteArray); 
-    for($n = 0; $n < 16; $n++)
+    $contents = fread($handle, $fsize);
+    $byteArray = unpack("C*",$contents); 
+    
+    for($n = 1; $n < 10; $n++)
     { 
-        echo $byteArray [$n].'<br/>'; 
+        echo $byteArray[$n].'<br/>'; 
     }
 
 }
