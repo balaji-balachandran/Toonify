@@ -1,3 +1,112 @@
 body{
-  background-color: oldlace;
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1{
+    background: -webkit-linear-gradient(30deg, #eee, #333);
+    font-size: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-size: 400%;
+    background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgb(182, 151, 14) 50%, rgba(0,0,0,1) 70%, rgba(0,0,0,1) 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: flash 2s infinite alternate;
+    text-align: center;
+    line-height: 80%;
+}
+
+p{
+    font-size: 1.2rem;
+    line-height: 150%;
+}
+
+@keyframes flash {
+    0%{
+        background-position: left;
+    }
+    100%{
+        background-position: right;
+    }
+}
+
+.container{
+    --width: 60vw;
+    --height: 80vh;
+    --padding-horizontal: 5vw;
+    --padding-vertical: 2vh;
+    position: relative;
+    padding-left: var(--padding-horizontal);
+    padding-right: var(--padding-horizontal);
+    padding-top: var(--padding-vertical);
+    padding-bottom: var(--padding-vertical);
+
+    width: calc(var(--width) - 2 * var(--padding-horizontal));
+    height: calc(var(--height) - 2 * var(--padding-vertical));
+    left: calc((100vw - var(--width)) / 2);
+    top: calc((100vh - var(--height)) / 2);
+
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.3px);
+    -webkit-backdrop-filter: blur(6.3px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.custom-file-upload{
+    border: 1px solid #ccc;
+    background-color: rgba(27, 211, 107, 0.3);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.custom-file-upload:hover{
+    background-color: rgba(27, 211, 107, 0.6);
+}
+
+input[type="file"]{
+    display: none;
+}
+
+.buttons{
+    --grid-width: 35%;
+    --grid-gap: 10px;
+    position: relative;
+    width: var(--grid-width);
+    left: calc((100% - (var(--grid-width) + var(--grid-gap))) / 2);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 20px;
+    grid-column-gap: var(--grid-gap);
+}
+
+#file-upload{
+    text-align: center;
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+}
+
+#upload-icon{
+    font-size: 20px;
+    text-align: center;
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+}
+
+#error-message{
+    color: red;
+    line-height: 10%;
+    font-size: small;
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 2;
 }
