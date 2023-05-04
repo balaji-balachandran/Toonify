@@ -1,5 +1,6 @@
 <?php
 require './config.php';
+require './huffman.php';
 
 $database = "Toonify";
 $table = "Requests";
@@ -34,10 +35,13 @@ if(isset($_POST['submit']) && isset($_FILES['image'])){
     $contents = fread($handle, $fsize);
     $byteArray = unpack("C*",$contents); 
 
-    for($n = 0; $n < 10; $n++)
-    { 
-        echo $byteArray[$n].'<br/>';
-    }
+    // for($n = 0; $n < 10; $n++)
+    // { 
+    //     echo $byteArray[$n].'<br/>';
+    // }
+
+    $tree = new Huffman($byteArray);
+    
 
 }
 ?>
