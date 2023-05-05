@@ -32,7 +32,6 @@ class PNG {
     unsigned int height_;            /*< Height of the image */
 
     RGBPixel* imageData_;            /*< Array of pixels */
-    // std::vector<RGBPixel>imageData_; /*< Vector of pixels */
 
     RGBPixel & _getPixelHelper(unsigned int x, unsigned int y) const;
 };
