@@ -8,10 +8,12 @@ class Huffman {
     protected $frequency_map;
     
     protected $dictionary;
+
+    public $binary_string;
     
     function __construct($array){
         $frequency_map = array();
-        
+
         $keys = array_keys($array);
 
         for($i = 0; $i < sizeof($array); $i++){
@@ -26,20 +28,20 @@ class Huffman {
         }
 
         asort($frequency_map);
-        print_r($frequency_map);
-
-        echo "<br><br><br>";
 
         $this->buildTree($frequency_map);
 
         $this->dictionary = $this->create_dictionary();
         
-        $binary_string = $this->create_binary_string($array);
-        echo $this->stringify_dictionary();
+        $this->binary_string = $this->create_binary_string($array);
     }
 
     public function create_binary_string($array){
-        
+        $binary_string = "";
+        foreach ($array as $key => $value) {
+            $binary_string .= $this->dictionary[$value];
+        } 
+        return $binary_string;
     }
 	
     public function buildTree($frequency_map){
