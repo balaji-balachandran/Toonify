@@ -1,6 +1,6 @@
-#include "lodepng.h"
+// #include "lodepng.h"
 #include "PNG.h"
-#include "RGBPixel.h"
+// #include "RGBPixel.h"
 
 using namespace std;
 

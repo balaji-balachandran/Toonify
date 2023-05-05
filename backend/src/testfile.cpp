@@ -17,7 +17,6 @@ int main () {
     s.insert(10, 9999);
     cout << s.get_root()->key << endl;
 
-
     s.insert(0, 9998);
     s.insert(20, 9997);
 

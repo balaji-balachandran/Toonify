@@ -4,31 +4,30 @@
 // #include <limits>
 // #include <tuple>
 // #include <map>
+// /*#define cimg_use_jpeg*/
 // #include "CImg.h"
-// #include "slic.h"
 
 // using namespace std;
 // using namespace cimg_library;
 
+// class SuperPixel {
+// public:
+//     int h, w;
+//     double l, a, b;
+//     vector<pair<int, int>> pixels;
 
-// // class SuperPixel {
-// // public:
-// //     int h, w;
-// //     double l, a, b;
-// //     vector<pair<int, int>> pixels;
+//     SuperPixel(int h, int w, double l = 0, double a = 0, double b = 0) {
+//         update(h, w, l, a, b);
+//     }
 
-// //     SuperPixel(int h, int w, double l = 0, double a = 0, double b = 0) {
-// //         update(h, w, l, a, b);
-// //     }
-
-// //     void update(int h, int w, double l, double a, double b) {
-// //         this->h = h;
-// //         this->w = w;
-// //         this->l = l;
-// //         this->a = a;
-// //         this->b = b;
-// //     }
-// // };
+//     void update(int h, int w, double l, double a, double b) {
+//         this->h = h;
+//         this->w = w;
+//         this->l = l;
+//         this->a = a;
+//         this->b = b;
+//     }
+// };
 
 // SuperPixel make_superPixel(int h, int w, const CImg<double> &img) {
 //     return SuperPixel(h, w, img(w, h, 0), img(w, h, 1), img(w, h, 2));
@@ -146,32 +145,33 @@
 // }
 
 // int main() {
-//     string input_image_path = "input.jpg";
-//     CImg<double> img(input_image_path.c_str());
-//     img.RGBtoLab();
+//     const double m = 40;
+//     const int S = 20;
+//     const int max_iter = 10;
 
-//     int img_h = img.height();
-//     int img_w = img.width();
+//     CImg<double> img("city.png");
+//     const int img_w = img.width();
+//     const int img_h = img.height();
 
-//     // Parameters
-//     int S = 40;  // Grid size
-//     double m = 40.0;  // Compactness factor
-
-//     // Data structures for the SLIC algorithm
 //     vector<SuperPixel> clusters;
-//     map<pair<int, int>, SuperPixel *> tag;
-//     CImg<double> dis(img_w, img_h, 1, 1, numeric_limits<double>::max());
+//     initial_cluster_center(S, img, img_h, img_w, clusters);
 
-//     // Run
-//     clusters = slic(S, img, img_h, img_w, clusters, tag, dis, m);
+//     for (int i = 0; i < max_iter; ++i) {
+//         reassign_cluster_center_acc_to_grad(clusters, img, img_w, img_h);
 
-//     // Convert to RGB
-//     img.LabtoRGB();
+//         map<pair<int, int>, SuperPixel *> tag;
+//         CImg<double> dis(img_w, img_h);
+//         dis.fill(numeric_limits<double>::max());
 
-//     // Save pls work
-//     string output_image_path = "output.jpg";
-//     avg_color_cluster(img, output_image_path, clusters);
+//         assign_pixels_to_cluster(clusters, S, img, img_h, img_w, tag, dis, m);
 
+//         update_cluster_mean(clusters, img);
+//     }
 
-//      return 0;
-// // }
+//     // Print cluster centers
+//     for (const auto &c : clusters) {
+//         cout << "(" << c.h << ", " << c.w << "): (" << c.l << ", " << c.a << ", " << c.b << ")" << endl;
+//     }
+
+//     return 0;
+// }

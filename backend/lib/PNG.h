@@ -8,6 +8,8 @@
 #include <cassert>
 #include <algorithm>
 #include <functional>
+
+#include "lodepng.h"
 #include "RGBPixel.h"
 
 

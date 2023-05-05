@@ -17,19 +17,19 @@ void RGBPixel::set_Tolerance(unsigned int toler) {
     tolerance = toler;
 }
 
-bool operator!= (RGBPixel const & other) const {
+bool RGBPixel::operator!= (RGBPixel const & other) const {
     return !(*this == other);
 }
 
-bool operator< (RGBPixel const & other) const {
+bool RGBPixel::operator< (RGBPixel const & other) const {
     return (!(*this == other) && !(*this > other));
 }
 
-bool operator> (RGBPixel const & other) const {
+bool RGBPixel::operator> (RGBPixel const & other) const {
     //Implement this w/Tanish advice
 }
 
-bool operator== (RGBPixel const & other) const {
+bool RGBPixel::operator== (RGBPixel const & other) const {
     if (r < (other.r - tolerance) || r > (other.r + tolerance)) {
         return false;
     }
