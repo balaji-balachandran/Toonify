@@ -3,6 +3,7 @@
 #include "../lib/PNG.h"
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -53,6 +54,18 @@ int main () {
     
     if (n) cout << n->key << endl;
     else cout << "nullptr" << endl;
+
+
+    // std::vector<int> vals;
+    // vals = s.get_nodes();
+    // std::cout << "{ ";
+    // for (int i : vals) {
+    //     std::cout << i << ' ';
+    // }
+    // std::cout << '}';
+
+    s.insert(10, 9995);
+
 
 
     return 0;

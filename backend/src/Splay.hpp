@@ -50,7 +50,7 @@ Node<K,V>* Splay<K,V>::insert(const K& key, const V& data) {
 
     while (curr->left && curr->right) {
         if (key < curr->key) curr = curr->left;
-        else if (key > curr->key) curr = curr->right;
+        else curr = curr->right;
     }
 
     if (key < curr->key) curr->left = new_node;
@@ -206,3 +206,21 @@ void Splay<K,V>::splay_nodes(Node<K,V>* n) {
 	}
 
 }
+
+// template<class K, class V>
+// std::vector<K> Splay<K,V>::get_nodes() {
+// 	std::vector<K>& keys = v;
+// 	get_nodes_rec(root, keys);
+// 	return keys;
+// }
+
+
+// template<class K, class V>
+// void get_nodes_rec(Node<K,V>* n, std::vector<K>& v) {
+// 	if (n == nullptr) return;
+	
+// 	// get_nodes_rec(n->left, v);
+// 	v.push_back(n->key);
+// 	// get_nodes_rec(n->right, v);
+
+// }

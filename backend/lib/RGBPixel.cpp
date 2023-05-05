@@ -21,9 +21,9 @@ bool RGBPixel::operator!= (RGBPixel const & other) const {
     return !(*this == other);
 }
 
-// bool RGBPixel::operator< (RGBPixel const & other) const {
-//     return (!(*this == other) && !(*this > other));
-// }
+bool RGBPixel::operator< (RGBPixel const & other) const {
+    return r < other.r && g < other.g && b < other.b;
+}
 
 // bool RGBPixel::operator> (RGBPixel const & other) const {
 //     //Implement this w/Tanish advice
