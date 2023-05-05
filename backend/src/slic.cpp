@@ -4,6 +4,7 @@
 #include <limits>
 #include <tuple>
 #include <map>
+/*#define cimg_use_jpeg*/
 #include "CImg.h"
 
 using namespace std;
@@ -144,31 +145,33 @@ vector<SuperPixel> slic(int S, CImg<double> &img, int img_h, int img_w, vector<S
 }
 
 int main() {
-    string input_image_path = "input.jpg";
-    CImg<double> img(input_image_path.c_str());
-    img.RGBtoLab();
+    const double m = 40;
+    const int S = 20;
+    const int max_iter = 10;
 
-    int img_h = img.height();
-    int img_w = img.width();
+    CImg<double> img("city.png");
+    const int img_w = img.width();
+    const int img_h = img.height();
 
-    // Parameters
-    int S = 40;  // Grid size
-    double m = 40.0;  // Compactness factor
-
-    // Data structures for the SLIC algorithm
     vector<SuperPixel> clusters;
-    map<pair<int, int>, SuperPixel *> tag;
-    CImg<double> dis(img_w, img_h, 1, 1, numeric_limits<double>::max());
+    initial_cluster_center(S, img, img_h, img_w, clusters);
 
-    // Run
-    clusters = slic(S, img, img_h, img_w, clusters, tag, dis, m);
+    for (int i = 0; i < max_iter; ++i) {
+        reassign_cluster_center_acc_to_grad(clusters, img, img_w, img_h);
 
-    // Convert to RGB
-    img.LabtoRGB();
+        map<pair<int, int>, SuperPixel *> tag;
+        CImg<double> dis(img_w, img_h);
+        dis.fill(numeric_limits<double>::max());
 
-    // Save pls work
-    string output_image_path = "output.jpg";
-    avg_color_cluster(img, output_image_path, clusters);
+        assign_pixels_to_cluster(clusters, S, img, img_h, img_w, tag, dis, m);
+
+        update_cluster_mean(clusters, img);
+    }
+
+    // Print cluster centers
+    for (const auto &c : clusters) {
+        cout << "(" << c.h << ", " << c.w << "): (" << c.l << ", " << c.a << ", " << c.b << ")" << endl;
+    }
 
     return 0;
 }
