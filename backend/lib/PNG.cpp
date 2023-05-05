@@ -49,33 +49,35 @@ RGBPixel & PNG::getPixel(unsigned int x, unsigned int y) { return _getPixelHelpe
 
 const RGBPixel & PNG::getPixel(unsigned int x, unsigned int y) const { return _getPixelHelper(x,y); }
 
-bool PNG::readFromFile(string const & fileName) {
+  bool PNG::readFromFile(string const & fileName) {
     vector<unsigned char> byteData;
     unsigned error = lodepng::decode(byteData, width_, height_, fileName);
 
-    //How do we decode & get width/height?
     if (error) {
-        cerr << "PNG decoder error " << error << ": " << lodepng_error_text(error) << endl;
-        return false;
+      cerr << "PNG decoder error " << error << ": " << lodepng_error_text(error) << endl;
+      return false;
     }
 
-    // imageData_.clear();
     delete[] imageData_;
-
     imageData_ = new RGBPixel[width_ * height_];
 
-    // imageData_.resize(width_ * height_, r);
-
     for (unsigned i = 0; i < byteData.size(); i += 4) {
-        rgbaColor rgb;
-        rgb.r = byteData[i];
-        rgb.g = byteData[i + 1];
-        rgb.b = byteData[i + 2];
-        rgb.a = byteData[i + 3];
-    }
-    return true;
-}
+      RGBPixel rgb;
+      rgb.r = byteData[i];
+      rgb.g = byteData[i + 1];
+      rgb.b = byteData[i + 2];
+      rgb.a = byteData[i + 3];
 
+    //   hslaColor hsl = rgb2hsl(rgb);
+    //   HSLAPixel & pixel = imageData_[i/4];
+    //   pixel.h = hsl.h;
+    //   pixel.s = hsl.s;
+    //   pixel.l = hsl.l;
+    //   pixel.a = hsl.a;
+    }
+
+    return true;
+  }
 
 bool PNG::writeToFile(string const & fileName) {
     unsigned char *byteData = new unsigned char[width_ * height_ * 4];

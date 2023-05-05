@@ -29,6 +29,7 @@ Rename this file to lodepng.cpp to use it for C++, or to lodepng.c to use it for
 */
 
 #include "lodepng.h"
+#include <iostream>
 
 #include <limits.h>
 #include <stdio.h>
@@ -349,6 +350,7 @@ static long lodepng_filesize(const char* filename)
   FILE* file;
   long size;
   file = fopen(filename, "rb");
+
   if(!file) return -1;
 
   if(fseek(file, 0, SEEK_END) != 0)
@@ -383,6 +385,7 @@ static unsigned lodepng_buffer_file(unsigned char* out, size_t size, const char*
 unsigned lodepng_load_file(unsigned char** out, size_t* outsize, const char* filename)
 {
   long size = lodepng_filesize(filename);
+
   if (size < 0) return 78;
   *outsize = (size_t)size;
 
@@ -6529,6 +6532,7 @@ namespace lodepng
 unsigned load_file(std::vector<unsigned char>& buffer, const std::string& filename)
 {
   long size = lodepng_filesize(filename.c_str());
+
   if(size < 0) return 78;
   buffer.resize((size_t)size);
   return size == 0 ? 0 : lodepng_buffer_file(&buffer[0], (size_t)size, filename.c_str());
