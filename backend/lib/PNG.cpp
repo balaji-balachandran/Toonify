@@ -2,7 +2,15 @@
 #include "PNG.h"
 #include "RGBPixel.h"
 
-
+PNG::PNG(unsigned int width, unsigned int height) {
+    width_ = width;
+    height_ = height;
+    std::vector<RGBPixel> row;
+    row.resize(width_);
+    imageData_.resize();
+    //Populate imageData
+    //Any other constructors/destructors?
+}
 
 RGBPixel & PNG::_getPixelHelper(unsigned int x, unsigned int y) const {
     if (width_ == 0 || height_ == 0) {
@@ -32,6 +40,7 @@ bool PNG::readFromFile(string const & fileName) {
     vector<unsigned char> byteData;
     unsigned error = lodepng::decode(byteData, width_, height_, fileName);
 
+    //How do we decode & get width/height?
     if (error) {
         cerr << "PNG decoder error " << error << ": " << lodepng_error_text(error) << endl;
         return false;
@@ -40,7 +49,7 @@ bool PNG::readFromFile(string const & fileName) {
     imageData_.clear();
     std::vector<RGBPixel> row;
     row.resize(width_);
-    imageData_.resize(height, row);
+    imageData_.resize(height_, row);
 
     for (unsigned i = 0; i < byteData.size(); i += 4) {
         rgbaColor rgb;

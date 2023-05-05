@@ -13,6 +13,7 @@
 class PNG {
   public:
     RGBPixel & getPixel(unsigned int x, unsigned int y);
+    PNG(unsigned int width, unsigned int height);
     unsigned int width() const;
     unsigned int height() const;
 
