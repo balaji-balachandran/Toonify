@@ -65,11 +65,11 @@ const RGBPixel & PNG::getPixel(unsigned int x, unsigned int y) const { return _g
       rgb.a = byteData[i + 3];
 
     //   hslaColor hsl = rgb2hsl(rgb);
-    //   HSLAPixel & pixel = imageData_[i/4];
-    //   pixel.h = hsl.h;
-    //   pixel.s = hsl.s;
-    //   pixel.l = hsl.l;
-    //   pixel.a = hsl.a;
+      RGBPixel & pixel = imageData_[i/4];
+      pixel.r = rgb.r;
+      pixel.g = rgb.g;
+      pixel.b = rgb.b;
+      pixel.a = rgb.a;
     }
 
     return true;
@@ -86,6 +86,8 @@ bool PNG::writeToFile(string const & fileName) {
       rgb.a = imageData_[i].a;
 
     //   rgbaColor rgb = hsl2rgb(hsl);
+      std::cout << rgb.r << ' ' << rgb.g << ' ' << rgb.b << '\n';
+
 
       byteData[(i * 4)]     = rgb.r;
       byteData[(i * 4) + 1] = rgb.g;

@@ -10,7 +10,7 @@ RGBPixel::RGBPixel() {
     r = 0;
     g = 0;
     b = 0;
-    a = 0;
+    a = 1;
 }
 
 void RGBPixel::set_Tolerance(unsigned int toler) {
