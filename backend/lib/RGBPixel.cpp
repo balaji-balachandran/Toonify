@@ -10,7 +10,7 @@ RGBPixel::RGBPixel() {
     r = 0;
     g = 0;
     b = 0;
-    a = 1;
+    a = 255; // alpha has to be 255 (for opaque) and 0 (for transparent)
 }
 
 void RGBPixel::set_Tolerance(unsigned int toler) {

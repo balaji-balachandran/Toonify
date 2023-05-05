@@ -90,7 +90,6 @@ bool PNG::writeToFile(string const & fileName) {
       rgb.a = imageData_[i].a;
 
     //   rgbaColor rgb = hsl2rgb(hsl);
-      std::cout << rgb.r << ' ' << rgb.g << ' ' << rgb.b << '\n';
 
 
       byteData[(i * 4)]     = rgb.r;
