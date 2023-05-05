@@ -9,7 +9,7 @@ exec: bin/exec
 test: bin/test
 
 bin/exec: src/main.cpp 
-	${CXX} $(INCLUDES) lib/PNG.cpp lib/lodepng.cpp lib/RGBPixel.cpp ${CXX_FLAGS} ${EXTRA_CXX_FLAGS} src/main.cpp -o bin/exec 
+	${CXX} $(INCLUDES) src/Huffman.cpp src/slic.cpp lib/PNG.cpp lib/lodepng.cpp lib/RGBPixel.cpp ${CXX_FLAGS} ${EXTRA_CXX_FLAGS} src/main.cpp -o bin/exec 
 	
 bin/test: src/testfile.cpp 
 	${CXX} $(INCLUDES) ${CXX_FLAGS} ${EXTRA_CXX_FLAGS} src/testfile.cpp -o bin/test 
