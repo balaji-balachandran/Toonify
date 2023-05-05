@@ -42,6 +42,7 @@ if(isset($_POST['submit']) && isset($_FILES['image'])){
 
     $tree = new Huffman($byteArray);
     
+    
 
 }
 ?>
