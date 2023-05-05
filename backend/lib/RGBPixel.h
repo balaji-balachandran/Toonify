@@ -16,6 +16,5 @@ class RGBPixel {
         void set_Tolerance(unsigned int toler);
         bool operator== (RGBPixel const & other) const;
         bool operator!= (RGBPixel const & other) const;
-        // bool operator< (RGBPixel const & other) const;
-        // bool operator> (RGBPixel const & other) const;
+        bool operator< (RGBPixel const & other) const;
 };

@@ -1,3 +1,6 @@
+#pragma once
+#include <vector>
+
 /**
  * @file Splay.h
  * Splay Tree Class Implementation
@@ -6,9 +9,6 @@
  * Delete - just delete all nodes at once using destructor
  * 
 */
-
-
-#pragma once
 template <class K, class V>
 struct Node{
     Node() = default;
@@ -35,15 +35,14 @@ public:
 
     Node<K,V>* get_root();
 
+    // std::vector<K> get_nodes();
+
 
 private:
-    void rotateLeft(Node<K,V>* n);
-    void rotateRight(Node<K,V>* n);
     void splay_nodes(Node<K,V>* n);
-
     Node<K,V>* rotate_right(Node<K,V>* n);
     Node<K,V>* rotate_left(Node<K,V>* n);
-
+    // void get_nodes_rec(Node<K,V>* n, std::vector<K>& v);
     void remove(Node<K,V>* n);
 
     
