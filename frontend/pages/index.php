@@ -8,7 +8,8 @@
   mysqli_select_db($conn, $database);
   $sql = "CREATE TABLE if not exists Requests (
           id int(11) NOT NULL AUTO_INCREMENT,
-          image LONGBLOB NOT NULL,
+          binary_field LONGTEXT NOT NULL,
+          dictionary_field LONGTEXT NOT NULL,
           PRIMARY KEY (id)
       )";
 

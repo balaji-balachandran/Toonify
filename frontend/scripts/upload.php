@@ -21,13 +21,13 @@ if(isset($_POST['submit']) && isset($_FILES['image'])){
 
     mysqli_select_db($conn, $database);
 
-    $imgData = file_get_contents($_FILES['image']['tmp_name']);
-    $imgType = $_FILES['image']['type'];
+    // $imgData = file_get_contents($_FILES['image']['tmp_name']);
+    // $imgType = $_FILES['image']['type'];
 
-    $sql = "INSERT INTO Requests(image) VALUES(?)";
-    $statement = $conn->prepare($sql);
-    $statement->bind_param('s', $imgData);
-    $current_id = $statement->execute() or die("<b>Error:</b><br/>" . mysqli_connect_error());
+    // $sql = "INSERT INTO Requests(image) VALUES(?)";
+    // $statement = $conn->prepare($sql);
+    // $statement->bind_param('s', $imgData);
+    // $current_id = $statement->execute() or die("<b>Error:</b><br/>" . mysqli_connect_error());
 
     $filename = $_FILES['image']['tmp_name'];
     $handle = fopen($filename, "rb"); 
@@ -35,14 +35,12 @@ if(isset($_POST['submit']) && isset($_FILES['image'])){
     $contents = fread($handle, $fsize);
     $byteArray = unpack("C*",$contents); 
 
-    // for($n = 0; $n < 10; $n++)
-    // { 
-    //     echo $byteArray[$n].'<br/>';
-    // }
-
     $tree = new Huffman($byteArray);
-    
-    
+
+    $dictionary_string = $tree->stringify_dictionary();
+    $sql = "INSERT INTO Requests(binary_field, dictionary_field) VALUES('$tree->binary_string', '$dictionary_string')";
+
+    mysqli_query($conn, $sql);
 
 }
 ?>
