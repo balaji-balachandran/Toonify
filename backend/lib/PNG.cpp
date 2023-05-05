@@ -10,6 +10,10 @@ PNG::PNG() {
     imageData_ = nullptr;
 }
 
+PNG::~PNG() {
+    delete[] imageData_;
+}
+
 PNG::PNG(unsigned int width, unsigned int height) {
     width_ = width;
     height_ = height;

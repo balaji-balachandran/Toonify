@@ -21,6 +21,9 @@ if(isset($_POST['submit']) && isset($_FILES['image'])){
 
     mysqli_select_db($conn, $database);
 
+
+
+
     // $imgData = file_get_contents($_FILES['image']['tmp_name']);
     // $imgType = $_FILES['image']['type'];
 
@@ -40,7 +43,21 @@ if(isset($_POST['submit']) && isset($_FILES['image'])){
     $dictionary_string = $tree->stringify_dictionary();
     $sql = "INSERT INTO Requests(binary_field, dictionary_field) VALUES('$tree->binary_string', '$dictionary_string')";
 
-    mysqli_query($conn, $sql);
+    // mysqli_query($conn, $sql);
 
+    // Downloads the file locally in case of SQL failure
+    $upload_dir = "./../../backend/build/";
+
+    $file_name = basename($_FILES['image']['name']);
+    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+
+    $rename = "source.".$file_ext;
+    $file_path = $upload_dir.$rename;
+
+    if(move_uploaded_file($_FILES['image']['tmp_name'], $file_path)) {
+        echo 'File uploaded successfully.';
+    } else{
+        echo 'Error uploading file.';
+    }
 }
 ?>
