@@ -2,6 +2,7 @@
 using namespace std;
 vector<unsigned char> decode(string sequence, string binary_val_map) {
     vector<string> comma_sep;
+    vector<unsigned char> result;
     map<string, unsigned char> binary_grp;
     stringstream s_stream(binary_val_map);
     while (s_stream.good()) {
