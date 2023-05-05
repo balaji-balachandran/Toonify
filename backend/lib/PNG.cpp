@@ -5,7 +5,7 @@
 using namespace std;
 
 PNG::PNG() {
-    width_ =0 ;
+    width_ = 0;
     height_ = 0;
     imageData_ = nullptr;
 }
@@ -73,7 +73,7 @@ bool PNG::readFromFile(string const & fileName) {
 }
 
 
-  bool PNG::writeToFile(string const & fileName) {
+bool PNG::writeToFile(string const & fileName) {
     unsigned char *byteData = new unsigned char[width_ * height_ * 4];
 
     for (unsigned i = 0; i < width_ * height_; i++) {

@@ -10,6 +10,8 @@
 #include <functional>
 #include "RGBPixel.h"
 
+
+using namespace std;
 class PNG {
   public:
     RGBPixel & getPixel(unsigned int x, unsigned int y);
