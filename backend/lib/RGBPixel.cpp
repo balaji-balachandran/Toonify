@@ -6,6 +6,13 @@ RGBPixel::RGBPixel(int red, int green, int blue, int alpha) {
     a = alpha;
 }
 
+RGBPixel::RGBPixel() {
+    r = 0;
+    g = 0;
+    b = 0;
+    a = 0;
+}
+
 void RGBPixel::set_Tolerance(unsigned int toler) {
     tolerance = toler;
 }

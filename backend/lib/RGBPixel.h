@@ -11,6 +11,7 @@ class RGBPixel {
         int b;
         int a;
         unsigned int tolerance;
+        RGBPixel();
         RGBPixel(int red, int green, int blue, int alpha);
         void set_Tolerance(unsigned int toler);
         bool operator== (RGBPixel const & other) const;
