@@ -11,17 +11,13 @@ int main () {
 
     Splay<int, int> s;
     PNG alma;
-    // alma.readFromFile("../images/alma.png");
+    alma.readFromFile("images/alma.png");
+    alma.writeToFile("images/alma_output.png");
 
 
-    FILE* f = fopen("alma.png", "rb");
-
-    if (f == nullptr) {
-        std::cout << "not opening \n";
-    }
-
-
-    // tiger.writeToFile("../images/tiger_output.png");
+    // PNG tiger;
+    // tiger.readFromFile("images/tiger.png");
+    // tiger.writeToFile("images/tiger.png");
 
     cout << "main executed" << endl;
     return 0;
