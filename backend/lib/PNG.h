@@ -16,6 +16,7 @@ class PNG {
     PNG(unsigned int width, unsigned int height);
     unsigned int width() const;
     unsigned int height() const;
+    bool readFromFile(string const & fileName);
 
   private:
     unsigned int width_;             /*< Width of the image */
