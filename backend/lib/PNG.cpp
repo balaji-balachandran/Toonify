@@ -2,12 +2,13 @@
 #include "PNG.h"
 #include "RGBPixel.h"
 
+using namespace std;
 PNG::PNG(unsigned int width, unsigned int height) {
     width_ = width;
     height_ = height;
     std::vector<RGBPixel> row;
     row.resize(width_);
-    imageData_.resize();
+    imageData_.resize(height_, row);
     //Populate imageData
     //Any other constructors/destructors?
 }
