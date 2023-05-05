@@ -14,7 +14,7 @@ class PNG {
   public:
     RGBPixel & getPixel(unsigned int x, unsigned int y);
     const RGBPixel & getPixel(unsigned int x, unsigned int y) const;
-
+    ~PNG();
     PNG();
     PNG(unsigned int width, unsigned int height);
     unsigned int width() const;
