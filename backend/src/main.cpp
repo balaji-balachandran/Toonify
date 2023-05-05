@@ -1,6 +1,9 @@
 #include "Splay.h"
 #include "Huffman.h"
 #include "../lib/PNG.h"
+#include <filesystem>
+#include <chrono>
+#include <thread>
 // #include "../lib/lodepng.h"
 
 #include <iostream>
@@ -11,16 +14,19 @@ int main () {
 
     Splay<int, int> s;
     PNG alma;
-    alma.readFromFile("images/alma.png");
+    std::string file_path = "build/source.png";
 
-    // for (int i = 20; i < 40; ++i) {
-    //     for (int j = 20; j < 40; ++j) {
-    //         alma.getPixel(i, j) = RGBPixel(0, 0, 255, 255);
-    //     }
-    // }
-    alma.writeToFile("images/alma_output.png");
+    while(true){
+        if(std::filesystem::exists(file_path)){
+            alma.readFromFile(file_path);
+            break;
+        }
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+
+    alma.writeToFile("images/toonified.png");
 
 
-    cout << "main executed" << endl;
+    cout << "main execute" << endl;
     return 0;
 }
