@@ -1,4 +1,4 @@
-#include "lodepng/lodepng.h"
+#include "lodepng.h"
 #include "PNG.h"
 #include "RGBPixel.h"
 
@@ -6,9 +6,8 @@ using namespace std;
 PNG::PNG(unsigned int width, unsigned int height) {
     width_ = width;
     height_ = height;
-    std::vector<RGBPixel> row;
-    row.resize(width_);
-    imageData_.resize(height_, row);
+    RGBPixel r;
+    imageData_.resize(width_ * height_, r);
     //Populate imageData
     //Any other constructors/destructors?
 }
@@ -48,9 +47,8 @@ bool PNG::readFromFile(string const & fileName) {
     }
 
     imageData_.clear();
-    std::vector<RGBPixel> row;
-    row.resize(width_);
-    imageData_.resize(height_, row);
+    RGBPixel r;
+    imageData_.resize(width_ * height_, r);
 
     for (unsigned i = 0; i < byteData.size(); i += 4) {
         rgbaColor rgb;
