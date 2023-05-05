@@ -7,6 +7,8 @@ class Huffman {
     
     protected $frequency_map;
     
+    protected $dictionary;
+    
     function __construct($array){
         $frequency_map = array();
         
@@ -25,7 +27,19 @@ class Huffman {
 
         asort($frequency_map);
         print_r($frequency_map);
+
+        echo "<br><br><br>";
+
         $this->buildTree($frequency_map);
+
+        $this->dictionary = $this->create_dictionary();
+        
+        $binary_string = $this->create_binary_string($array);
+        echo $this->stringify_dictionary();
+    }
+
+    public function create_binary_string($array){
+        
     }
 	
     public function buildTree($frequency_map){
@@ -77,11 +91,39 @@ class Huffman {
         $elem = array_shift($frequency_queue);
         return $elem;
     }
+
+    public function create_dictionary(){
+        $dictionary = array();
+        $seq = "";
+        $this->add_node_to_dictionary($this->root, $seq, $dictionary);
+        
+        return $dictionary;
+    }
+
+    public function add_node_to_dictionary($node, $sequence, &$dictionary){
+        if ($node->isLeaf()){
+            $dictionary[$node->value] = $sequence;
+        } else {
+            $recurse_left = $sequence."0";
+            $recurse_right = $sequence."1";
+            $this->add_node_to_dictionary($node->left, $recurse_left, $dictionary);
+            $this->add_node_to_dictionary($node->right, $recurse_right, $dictionary);
+        }
+    }
+
+    public function stringify_dictionary(){
+        $keys = array_keys($this->dictionary);
+        $seq = "";
+        for($i = 0; $i < count($keys); $i++){
+            $entry = $this->dictionary[$keys[$i]].":".$keys[$i];
+            $seq .= ($i == count($keys) - 1) ? $entry : $entry.",";
+        }
+        return $seq;
+    }
 }
 
 class HuffmanNode {
 
-    
     public $value;
 
     public $frequency;
@@ -95,7 +137,7 @@ class HuffmanNode {
         $this->frequency = $frequency;
     }
 
-    function isLeaf() {
+    public function isLeaf() {
         return ($this->left == null && $this->right == null);
     }
 	
