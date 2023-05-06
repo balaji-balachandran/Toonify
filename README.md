@@ -31,6 +31,8 @@ Written Report - located in /results.md
 
 To run all the algorithms in this project, please navigate to the folder containing the Makefile and running it. Your output will be a Toonified image named 'toonified.png' in the backend/images folder. All the steps for this are written out below.
 
+A video explanation of our project is attached as an mp4 file in the repository.
+
 cd backend
 
 make exec
