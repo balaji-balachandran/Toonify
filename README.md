@@ -7,6 +7,8 @@ Toonify is a C++ based program that allows the user to input a .png and outputs 
 The SLIC superpixeling algorithm is described in the article by Achanta et al. titled "SLIC Superpixels", linked below:
 https://www.iro.umontreal.ca/~mignotte/IFT6150/Articles/SLIC_Superpixels.pdf
 
+The original & "Toonified" images are under the Toonify directory.
+
 ## Repository Organization
 
 Frontend files - located in /frontend
