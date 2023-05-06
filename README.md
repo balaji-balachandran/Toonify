@@ -1,6 +1,35 @@
 # Toonify
-CS 225 Final Project. 
+CS 225 Final Project
 
+## Our Project
+Toonify is a C++ based program that allows the user to input a .png and outputs the image as a cartoonified version of itself. The project utilizes the SLIC (Simple Iterative Linear Clustering) algorithm.
+
+The SLIC superpixeling algorithm is described in the article by Achanta et al. titled "SLIC Superpixels", linked below:
+https://www.iro.umontreal.ca/~mignotte/IFT6150/Articles/SLIC_Superpixels.pdf
+
+## Repository Organization
+
+Frontend files - located in /frontend
+
+Includes php files in /frontend/scripts and /frontend/pages, and CSS files in /frontend/css
+
+
+Backend files - located in /backend
+
+Includes primary algorithms in /backend/src and supporting image classes in /backend/lib
+
+
+Makefile - located in /backend
+
+
+Image files - located in /backend/images
+
+
+Written Report - located in /results.md
+
+## Running our files
+
+To run all the algorithms in this project, please navigate to the folder containing the Makefile and running it. Your output will be a Toonified image named 'toonified.png' in the backend/images folder. All the steps for this are written out below.
 
 cd backend
 

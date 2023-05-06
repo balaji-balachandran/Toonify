@@ -37,7 +37,7 @@ int main () {
     PNG write_img(toon.ColorImage());
     
     write_img.writeToFile("images/toonified.png");
-    
+  
     return 0;
 
 }
