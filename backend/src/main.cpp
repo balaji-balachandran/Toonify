@@ -28,6 +28,9 @@ int main () {
 
     alma.writeToFile("images/toonified.png");
 
+    cout << alma.width() << " x " << alma.height() << '\n';
+
+
 
     cout << "main execute" << endl;
 
