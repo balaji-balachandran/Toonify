@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <chrono>
 #include <thread>
+#include "toonify.h"
 // #include "../lib/lodepng.h"
 
 #include <iostream>
@@ -26,13 +27,17 @@ int main () {
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
-    alma.writeToFile("images/toonified.png");
+    int k = 600;
+    int var = 30;
+    
+    Toonify toon(alma,k, var);
+    
+    toon.ExecuteSlic();
 
-    cout << alma.width() << " x " << alma.height() << '\n';
-
-
-
-    cout << "main execute" << endl;
-
+    PNG write_img(toon.ColorImage());
+    
+    write_img.writeToFile("images/toonified.png");
+  
     return 0;
+
 }
