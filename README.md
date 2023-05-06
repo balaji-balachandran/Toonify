@@ -8,13 +8,19 @@ The SLIC superpixeling algorithm is described in the article by Achanta et al. t
 https://www.iro.umontreal.ca/~mignotte/IFT6150/Articles/SLIC_Superpixels.pdf
 
 ## Repository Organization
+
 Frontend files - located in /frontend
+
 Includes php files in /frontend/scripts and /frontend/pages, and CSS files in /frontend/css
 
+
 Backend files - located in /backend
+
 Includes primary algorithms in /backend/src and supporting image classes in /backend/lib
 
+
 Makefile - located in /backend
+
 
 Image files - located in /backend/images
 
