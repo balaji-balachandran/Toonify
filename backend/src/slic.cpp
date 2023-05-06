@@ -443,53 +443,54 @@ void SLIC::display_contours(PNG *image, const RGBPixel& color) {
  * Input : The target image (IplImage*).
  * Output: -
  */
-// void Slic::colour_with_cluster_means(IplImage *image) {
-//     vector<RGBPixel> colors(centers.size());
+void SLIC::colour_with_cluster_means(PNG *image) {
+    vector<RGBPixel> colors(centers.size());
     
-//     /* Gather the colour values per cluster. */
-//     for (unsigned int i = 0; i < image->width; i++) {
-//         for (unsigned int j = 0; j < image->height; j++) {
-//             int index = clusters[i][j];
-//             RGBPixel color = cvGet2D(image, j, i);
+    /* Gather the colour values per cluster. */
+    for (unsigned int i = 0; i < image->width(); i++) {
+        for (unsigned int j = 0; j < image->height(); j++) {
+            int index = clusters[i][j];
+            RGBPixel color = image->getPixel(i, j);
             
-//             colours[index].val[0] += colour.val[0];
-//             colours[index].val[1] += colour.val[1];
-//             colours[index].val[2] += colour.val[2];
-//         }
-//     }
+            colors[index].r += color.r;
+            colors[index].g += color.g;
+            colors[index].b += color.b;
+        }
+    }
     
-//     /* Divide by the number of pixels per cluster to get the mean colour. */
-//     for (int i = 0; i < (int)colours.size(); i++) {
-//         colours[i].val[0] /= center_counts[i];
-//         colours[i].val[1] /= center_counts[i];
-//         colours[i].val[2] /= center_counts[i];
-//     }
+    /* Divide by the number of pixels per cluster to get the mean colour. */
+    for (int i = 0; i < (int)colors.size(); i++) {
+        colors[i].r /= center_counts[i];
+        colors[i].g /= center_counts[i];
+        colors[i].b /= center_counts[i];
+    }
     
-//     /* Fill in. */
-//     for (int i = 0; i < image->width; i++) {
-//         for (int j = 0; j < image->height; j++) {
-//             CvScalar ncolour = colours[clusters[i][j]];
-//             cvSet2D(image, j, i, ncolour);
-//         }
-//     }
-// }
+    /* Fill in. */
+    for (unsigned i = 0; i < image->width(); i++) {
+        for (unsigned j = 0; j < image->height(); j++) {
+            RGBPixel ncolor = colors[clusters[i][j]];
+            image->getPixel(i, j) = ncolor;
+            // cvSet2D(image, j, i, ncolor);
+        }
+    }
+}
 
 int main() {
 
 
     PNG img;
-    img.readFromFile("build/source.png");
+    img.readFromFile("build/cooltiger.png");
     // img.readFromFile("build/source.png");
 
     unsigned int w = img.width(), h = img.height();
 
-    double step = sqrt((w * h) / (double) 20);
+    double step = sqrt((w * h) / (double) 40);
     SLIC slic;
 
-    slic.generate_superpixels(&img, step, 1); // nc = 1
+    slic.generate_superpixels(&img, step, 10); 
     slic.create_connectivity(&img);
-    
-    slic.display_contours(&img, RGBPixel{255, 0, 0, 255});
+    slic.colour_with_cluster_means(&img);
+    // slic.display_contours(&img, RGBPixel{255, 255, 255, 255});
 
     img.writeToFile("images/output.png");
 

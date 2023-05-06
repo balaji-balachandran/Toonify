@@ -18,13 +18,13 @@ int main () {
 
     std::string file_path = "build/source.png";
 
-    while(true){
-        if(std::filesystem::exists(file_path)){
-            alma.readFromFile(file_path);
-            break;
-        }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
+    // while(true){
+    //     if(std::filesystem::exists(file_path)){
+    //         alma.readFromFile(file_path);
+    //         break;
+    //     }
+    //     std::this_thread::sleep_for(std::chrono::seconds(1));
+    // }
 
     alma.writeToFile("images/toonified.png");
 
