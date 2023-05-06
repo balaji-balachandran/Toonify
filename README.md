@@ -31,7 +31,19 @@ Written Report - located in /results.md
 
 To run all the algorithms in this project, please navigate to the folder containing the Makefile and running it. Your output will be a Toonified image named 'toonified.png' in the backend/images folder. All the steps for this are written out below.
 
-A video explanation of our project is attached as an mp4 file in the repository.
+A video explanation of our project is attached as an mp4 file in the repository. View the youtube video here: https://youtu.be/219YsAPvwi4
+
+# Steps to run the files:
+
+To run the PHP, you must first download xampp and apache (download links here: https://www.apachefriends.org/download.html)
+
+Then, git clone the repository into htdocs (in C: drive if used default installation)
+
+To run the php, open the apache control panel and hit start on apache and SQL.
+
+Navigate to localhost/Toonify/frontend/pages to get to the landing page
+
+Then back in terminal: 
 
 cd backend
 
@@ -46,3 +58,9 @@ make clean
 
 Runs slic.cpp main function:            
 g++ src/slic.cpp -std=c++20 -gdwarf-4 -fstandalone-debug -Wall -Wextra -Werror -pedantic -o bin/slic
+
+./bin/exec will start the C++ for accepting the file.
+
+Then we can simply upload the image into the home page and see the results pop up under Toonify/backend/images !
+
+Hope you enjoy!
