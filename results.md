@@ -4,9 +4,9 @@
 Huffman - Encodes and decodes image data.
 Our Huffman algorithm accesses an image and converts it between a png file and raw binary data
 
-SLIC - Uses the data given by the Huffman algorithm to process the image and output the toonified image
+SLIC - Uses the data given by the Huffman algorithm to process the image and output the toonified image. Uses edge weights and determines what parts of an image should be turned into superpixels and outputs a newly created image using an input of a 2D array of pixels. 
 
-Splay - Finds the average color in the algorithm
+Splay - Finds the average color in the algorithm. Utilized splay property which enabled faster runtimes when accessing pixels.
 
 
 ## Leading Question
