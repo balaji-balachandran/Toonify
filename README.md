@@ -2,6 +2,9 @@
 CS 225 Final Project. 
 
 
+
+## Running the file
+
 cd backend
 
 make exec
