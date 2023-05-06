@@ -24,6 +24,9 @@ Makefile - located in /backend
 
 Image files - located in /backend/images
 
+
+Written Report - located in /results.md
+
 ## Running our files
 
 To run all the algorithms in this project, please navigate to the folder containing the Makefile and running it. Your output will be a Toonified image named 'toonified.png' in the backend/images folder. All the steps for this are written out below.
