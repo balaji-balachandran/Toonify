@@ -1,0 +1,1 @@
+We found your code for the algorithm (SLIC) you proposed to implement is almost same as the code from a public repo (https://github.com/PSMM/SLIC-Superpixels) and you didn't cite the code. At this point, you will receive 0 for the final project.
